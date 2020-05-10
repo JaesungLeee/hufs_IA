@@ -85,72 +85,75 @@ flush_suit = "DDDDD"
 test_case = {
     # make with dictionary {"Ranking" : (tuple)}
     Ranking.Straight_flush : (
-        tuple(zip("65432", flush_suit)),
-        tuple(zip("KQJT9", flush_suit)),
-        tuple(zip("76543", flush_suit)),
-        tuple(zip("T9876", flush_suit)),
         tuple(zip("AKQJT", flush_suit)),
+        tuple(zip("KQJT9", flush_suit)),
+        tuple(zip("T9876", flush_suit)),
+        tuple(zip("76543", flush_suit)),
+        tuple(zip("65432", flush_suit)),
     ),
     
     Ranking.Four_of_a_kind: (
-        tuple(zip("66663", non_flush_suit)),
         tuple(zip("KKKKT", non_flush_suit)),
-        tuple(zip("33332", non_flush_suit)),
         tuple(zip("QQQQ8", non_flush_suit)),
+        tuple(zip("QQQQ2", non_flush_suit)),
         tuple(zip("TTTT2", non_flush_suit)),
+        tuple(zip("66663", non_flush_suit)),
+        tuple(zip("33332", non_flush_suit)),
     ),
 
     Ranking.Full_house: (
-        tuple(zip("55533", non_flush_suit)),
         tuple(zip("KKK88", non_flush_suit)),
+        tuple(zip("JJJ99", non_flush_suit)),
         tuple(zip("JJJ77", non_flush_suit)),
         tuple(zip("66644", non_flush_suit)),
-        tuple(zip("JJJ99", non_flush_suit)),
+        tuple(zip("55533", non_flush_suit)),
     ),
 
     Ranking.Flush: (
-        tuple(zip("96532", flush_suit)),
-        tuple(zip("KJ953", flush_suit)),
-        tuple(zip("J8643", flush_suit)),
         tuple(zip("AT862", flush_suit)),
-        tuple(zip("KJ642", flush_suit)),
+        tuple(zip("KJ953", flush_suit)),
+        tuple(zip("KT642", flush_suit)),
+        tuple(zip("J8643", flush_suit)),
+        tuple(zip("96532", flush_suit)),
     ),
 
     Ranking.Straight: (
-        tuple(zip("65432", non_flush_suit)),
         tuple(zip("AKQJT", non_flush_suit)),
         tuple(zip("T9876", non_flush_suit)),
-        tuple(zip("76543", non_flush_suit)),
         tuple(zip("98765", non_flush_suit)),
+        tuple(zip("76543", non_flush_suit)),
+        tuple(zip("65432", non_flush_suit)),
     ),
 
     Ranking.Three_of_a_kind: (
-        tuple(zip("99942", non_flush_suit)),
-        tuple(zip("KKK53", non_flush_suit)),
-        tuple(zip("88852", non_flush_suit)),
-        tuple(zip("TTT75", non_flush_suit)),
         tuple(zip("KKK72", non_flush_suit)),
+        tuple(zip("KKK53", non_flush_suit)),
+        tuple(zip("TTT75", non_flush_suit)),
+        tuple(zip("99942", non_flush_suit)),
+        tuple(zip("88852", non_flush_suit)),
     ),
 
     Ranking.Two_pairs: (
-        tuple(zip("88552", non_flush_suit)),
+        tuple(zip("KKTT8", non_flush_suit)),
         tuple(zip("KK994", non_flush_suit)),
         tuple(zip("TT554", non_flush_suit)),
-        tuple(zip("KKTT8", non_flush_suit)),
+        tuple(zip("88552", non_flush_suit)),
         tuple(zip("77443", non_flush_suit)),
+        tuple(zip("77442", non_flush_suit)),
     ),
 
     Ranking.One_pair: (
-        tuple(zip("77642", non_flush_suit)),
-        tuple(zip("JJ952", non_flush_suit)),
-        tuple(zip("66432", non_flush_suit)),
         tuple(zip("KK973", non_flush_suit)),
+        tuple(zip("JJ952", non_flush_suit)),
         tuple(zip("88543", non_flush_suit)),
+        tuple(zip("77642", non_flush_suit)),
+        tuple(zip("66532", non_flush_suit)),
+        tuple(zip("66432", non_flush_suit)),
     ),
 
     Ranking.High_card: (
-        tuple(zip("KT752", non_flush_suit)),
         tuple(zip("A8642", non_flush_suit)),
+        tuple(zip("KT752", non_flush_suit)),
         tuple(zip("JT753", non_flush_suit)),
         tuple(zip("98742", non_flush_suit)),
         tuple(zip("87543", non_flush_suit)),
@@ -223,8 +226,15 @@ def test_evaluate_rankings(faces, expected):
 def test_tie_break(faces, expected):
     hand_cases = [Hands([PKCard(i) for i in faces]) for faces, ranking in cases()]
     cards = [PKCard(c) for c in faces]
-    # for hand in hand_cases:
-    #     hand.tie_break(cards) 
+    count1 = 0
+    for i in range(len(hand_cases) -1):
+        if hand_cases[i].tie_break(hand_cases[i+1]) == True:
+            count1 +=1
+    count2 = 0
+    for i in range(len(hand_cases) -1):
+        if hand_cases[i+1].tie_break(hand_cases[i]) == False:
+            count2 += 1
+    assert count1 == count2 
     print("\nHigh to low order : ")
     for i, hand in enumerate(hand_cases):
         print(i, hand)
