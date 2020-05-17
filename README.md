@@ -1,2 +1,2 @@
 # hufs_IA
-HUFS_IA_Python
+### 인터넷 응용 과제
