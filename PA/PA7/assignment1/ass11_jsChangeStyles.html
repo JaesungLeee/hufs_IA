@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>javaScript는 HTML요소 중 style도 바꿔 줍니다.</h1>
+
+<p id="student">201602560</p>
+
+<script>
+function myFunc() {
+  document.getElementById("student").innerHTML = "Jaesung Lee";
+  document.getElementById("student").style.fontSize = "17px";
+  document.getElementById("student").style.color = "purple";
+  document.getElementById("student").style.backgroundColor = "ivory";
+}
+</script>
+
+<button type="button" onclick="myFunc()"> 누르세요 </button>
+
+</body>
+</html>

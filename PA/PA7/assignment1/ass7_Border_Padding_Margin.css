@@ -1,0 +1,21 @@
+body {
+    background-color: ivory;
+}
+h1   {
+    color: blue;
+    font-family : sans-serif;
+}
+p    {
+    color : blue;
+    border: 1px solid blue;
+}
+p1   {
+    color : green;
+    border: 1px solid blue;
+    padding: 15px;
+}
+p2   {
+    color : red;
+    border : 1px solid blue;
+    margin : 50px;
+}

@@ -1,0 +1,51 @@
+body {
+    background-color: LightCyan;
+}
+
+p {
+    color : BlueViolet;
+    text-align : center;
+}
+
+hr {
+    height : 5px;
+    border-width : 0;
+    color : gray;
+    background-color : gray;
+}
+
+.introduce {
+    background-color : white;
+    color : white;
+}
+
+.wrap {
+    display : inline-block;
+}
+
+.key {
+    color : DarkGoldenRod;
+}
+
+.value {
+    color : Coral;
+}
+
+h3 {
+    color : brown;
+    font-family : courier;
+    font-size : 120%;
+}
+
+tabel {
+    width : 120%;
+}
+
+table, th, td {
+    border : 1px solid blue;
+}
+
+td {
+    text-align : center;
+}
+

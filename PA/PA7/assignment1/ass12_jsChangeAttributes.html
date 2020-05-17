@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+function base(door) {
+  var pic;
+  if (door == 0) {
+    pic = "doorClose.png"
+  } else {
+    pic = "doorOpen.png"
+  }
+  document.getElementById('doorState').src = pic;
+}
+</script>
+
+<img id="doorState" src="doorClose.png" width="140" height="180">
+
+<p>
+<button type="button" onclick="base(1)">Door Open</button>
+<button type="button" onclick="base(0)">Door Close</button>
+</p>
+
+</body>
+</html>
